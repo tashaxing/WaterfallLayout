@@ -36,14 +36,18 @@
         [picArray addObject:imgURL];
     }
 
-    // 控件
+    // 格子控件
     WaterfallFlowLayout *flowLayout = [[WaterfallFlowLayout alloc] init];
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:flowLayout];
+    collectionView.backgroundColor = [UIColor greenColor];
     collectionView.delegate = self;
     collectionView.dataSource = self;
     
     [collectionView registerClass:[WaterfallCollectionViewCell class] forCellWithReuseIdentifier:kWaterfallCell];
     [self.view addSubview:collectionView];
+    [collectionView reloadData];
 }
 
 #pragma mark - collectionview代理
@@ -68,6 +72,8 @@
     return cell;
 }
 
+
+#pragma mark - flowlayout代理
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     

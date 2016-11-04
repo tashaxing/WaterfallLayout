@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-const int kColNum = 3; // 每行固定列数
+#define kColNum 3 // 每行固定列数
 
 @interface WaterfallFlowLayout : UICollectionViewFlowLayout
 
