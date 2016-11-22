@@ -65,9 +65,13 @@
     }
     
     // 设置网络图片
-    NSString *urlStr = picArray[indexPath.item]; // 得到该section里面的索引
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
-    cell.cellImage = [UIImage imageWithData:data];
+//    NSString *urlStr = picArray[indexPath.item]; // 得到该section里面的索引
+//    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
+//    cell.cellImage = [UIImage imageWithData:data];
+    
+    // 设置本地图片
+    NSString *localPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%ld.jpg", indexPath.item + 1] ofType:nil];
+    cell.cellImage = [UIImage imageNamed:localPath];
     
     return cell;
 }
@@ -76,10 +80,14 @@
 #pragma mark - flowlayout代理
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    // 网络图片
+//    NSString *urlStr = picArray[indexPath.item];
+//    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
+//    UIImage *img = [UIImage imageWithData:data];
     
-    NSString *urlStr = picArray[indexPath.item];
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlStr]];
-    UIImage *img = [UIImage imageWithData:data];
+    // 本地图片
+    NSString *localPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%ld.jpg", indexPath.item + 1] ofType:nil];
+    UIImage *img = [UIImage imageNamed:localPath];
     
     // 根据内容尺寸调整
     CGFloat itemWidth = collectionView.frame.size.width / kColNum;
