@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#define kCellWidth 100 // cell的固定宽度
 
 @interface WaterfallCollectionViewCell : UICollectionViewCell
 

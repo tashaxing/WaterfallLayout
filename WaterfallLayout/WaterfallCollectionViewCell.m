@@ -26,7 +26,8 @@
 - (void)drawRect:(CGRect)rect
 {
     // 定宽，根据比例缩放图片
-    CGFloat width = self.frame.size.width;
+//    CGFloat width = self.frame.size.width;
+    CGFloat width = kCellWidth;
     CGFloat height = width * _cellImage.size.height / _cellImage.size.width;
     
     // 绘图
